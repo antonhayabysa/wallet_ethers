@@ -1,0 +1,16 @@
+{
+  "name": "wallet_ethers",
+  "version": "1.0.0",
+  "description": "wallet",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ethers": "^5.4.7",
+    "grammy": "^1.24.0"
+  }
+}
