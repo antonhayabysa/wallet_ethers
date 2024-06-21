@@ -1,0 +1,53 @@
+app = "wallet-ethers"
+primary_region = "ams"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
+
+[[vm]]
+  memory = "1gb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[build]
+  [build.args]
+    NODE_VERSION = "20.5.1"
+
+[env]
+  TELEGRAM_BOT_TOKEN = "7230110914:AAESDlirwRS4giORtdpeYUk0p0NixdVGZwA"
+  YOUR_CHAT_ID = "305515622"
+
+[deploy]
+  release_command = "npm install"
+
+[experimental]
+  allowed_public_ports = [80, 443]
+  auto_rollback = true
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    interval = 10000
+    timeout = 2000
+    grace_period = "5s"
+    restart_limit = 0

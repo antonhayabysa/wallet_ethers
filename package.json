@@ -5,12 +5,20 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "deploy": "fly deploy -a wallet-ethers",
+    "status": "fly status -a wallet-ethers",
+    "logs": "fly logs -a wallet-ethers",
+    "secrets": "fly secrets set TELEGRAM_BOT_TOKEN=7230110914:AAESDlirwRS4giORtdpeYUk0p0NixdVGZwA YOUR_CHAT_ID=305515622 -a wallet-ethers"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "ethers": "^5.4.7",
     "grammy": "^1.24.0"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.7"
   }
 }
